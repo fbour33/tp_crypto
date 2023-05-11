@@ -36,7 +36,7 @@ def euclide_ext(a,b):
 
 # retourne un entier b dans [1,N-1] avec ab=1 modulo N
 def inverse_modulaire(N,a):
-    d, u, v = euclide_ext(a, N)
+    d, u, v = euclide_ext(N, a)
     if(d != 1):
         raise ValueError("d != 1")
     if v < 0:

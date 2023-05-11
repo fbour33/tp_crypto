@@ -21,9 +21,9 @@ def main():
     # Q12
     ####################
     
-    print("Message non crypté : " + m)
-    m = "ceci est le message de la question"
     (e, d, N) = gen_rsa(512)
+    m = "ceci est le message de la question"
+    print("Message non crypté : " + m)
     c = RSAcipher(e, N, m)
     print("Message encrypté par RSAcypher : ", c)
     decypher_m = RSAdecipher(d, N, c);

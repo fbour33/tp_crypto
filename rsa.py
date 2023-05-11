@@ -18,7 +18,7 @@ def gen_rsa(n):
     e = random.randint(2, phi_N-1)
     while pgcd(e, phi_N) != 1:
         e = random.randint(2, phi_N-1)
-    d = inverse_modulaire(e, phi_N)
+    d = inverse_modulaire(phi_N, e)
     return(e, d, N)
 
 #print(gen_rsa(512))
