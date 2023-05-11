@@ -163,8 +163,8 @@ def temoin_rabin(a,n):
             return False
     return True
 
-for i in range(20):
-    print(i," : ", temoin_rabin(i, 71))
+# for i in range(20):
+#     print(i," : ", temoin_rabin(i, 71))
 
 #n entier a tester, t nombre de tests
 #retourne True , si n est premier
@@ -176,6 +176,8 @@ def test_rabin(n,t):
         if tmp == True:
             return False
     return True
+
+# print(test_rabin(163, 10))
             
 # prime generator
 # output: n range for prime number
@@ -183,7 +185,12 @@ def test_rabin(n,t):
 # pour generer un nombre premier sur n bits.
 # range de n: p = random.randint(pow(2,n-1),pow(2,n)-1)
 def gen_prime(n):
-    return 0
+    while True:
+        p = random.randint(pow(2, n-1), pow(2, n)-1)
+        if test_rabin(p, 20): # t = 20 pour une probabilité d'erreur très faible
+            return p
+
+print(gen_prime(10))
 
 ####################
 # Helper functions for rsa/elgamal
