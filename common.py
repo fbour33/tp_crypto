@@ -190,7 +190,7 @@ def gen_prime(n):
         if test_rabin(p, 20): # t = 20 pour une probabilité d'erreur très faible
             return p
 
-print(gen_prime(10))
+# print(gen_prime(10))
 
 ####################
 # Helper functions for rsa/elgamal
