@@ -15,12 +15,19 @@ def main():
     # RSA                                                                                                             #
     #########################################################################################################################
     print("test RSA")
-    print()
+    
 
     ####################
     # Q12
     ####################
+    
+    print("Message non crypté : " + m)
     m = "ceci est le message de la question"
+    (e, d, N) = gen_rsa(512)
+    c = RSAcipher(e, N, m)
+    print("Message encrypté par RSAcypher : ", c)
+    decypher_m = RSAdecipher(d, N, c);
+    print("Message décrypté par RSAdecypher : " + decypher_m)
 
     
     ####################
@@ -29,6 +36,9 @@ def main():
     
     # signez et verifiez le message m
     # utilisez la meme signature sur un autre message et montrez que la signature est invalide
+    
+    print("Vérification du RSA message valide : ", RSAverification(e, N, m, RSAsignature(d, N, m)))
+    print("Vérification du RSA message invalide : ", RSAverification(e, N, m, RSAsignature(d, N, m)-1))
 
     #########################################################################################################################
     # ELGAMAL                                                                                                             #

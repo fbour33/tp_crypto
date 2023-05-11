@@ -117,17 +117,3 @@ def RSAsignature(d,N,m):
 def RSAverification(e,N,m,sig):
     return m == int_to_str(expo_modulaire_fast(e, sig, N))
 
-####################
-# TEST RSA
-####################
-
-(e, d, N) = gen_rsa(512)
-m = "ceci est le message de la question"
-print("Message non crypté : " + m)
-c = RSAcipher(e, N, m)
-print("Message encrypté par RSAcypher : ", c)
-decypher_m = RSAdecipher(d, N, c);
-print("Message décrypté par RSAdecypher : " + decypher_m)
-
-print("Vérification du RSA message valide : ", RSAverification(e, N, m, RSAsignature(d, N, m)))
-print("Vérification du RSA message invalide : ", RSAverification(e, N, m, RSAsignature(d, N, m)-1))
