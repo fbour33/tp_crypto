@@ -89,7 +89,7 @@ def expo_modulaire_fast(e,b,n):
         res += n
     return res
 
-print(expo_modulaire_fast(3, 5, 13))
+# print(expo_modulaire_fast(3, 5, 13))
 
 ####################
 # Q5
