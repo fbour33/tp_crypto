@@ -54,6 +54,8 @@ def expo_modulaire(e,b,n):
     for _ in range(1, e):
         res *= b
         res = res%n
+    if res < 0:
+        res += n
     return res
 
 #print(expo_modulaire(3, 5, 13))
@@ -83,9 +85,11 @@ def expo_modulaire_fast(e,b,n):
         if(int_e == 1):
             res = (res*b)%n
         b = (b*b)%n
+    if res < 0:
+        res += n
     return res
 
-#print(expo_modulaire_fast(3, 5, 13))
+print(expo_modulaire_fast(3, 5, 13))
 
 ####################
 # Q5
@@ -190,7 +194,7 @@ def gen_prime(n):
         if test_rabin(p, 20): # t = 20 pour une probabilité d'erreur très faible
             return p
 
-print(gen_prime(10))
+#print(gen_prime(10))
 
 ####################
 # Helper functions for rsa/elgamal
