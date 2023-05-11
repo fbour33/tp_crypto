@@ -8,16 +8,16 @@ from math import sqrt
 ####################
 
 # retourne le pgcd de deux entiers naturels
-def pgcd(a,b):
-    if b == 0:
-        return a
-    else:
-        return pgcd(b, a % b)
+def pgcd(a, b):
+    while b != 0:
+        r = a % b
+        a = b
+        b = r
+    return a
 
 # algo euclide etendu
 # retourne d,u,v avec pgcd(a,b)=d=ua+vb
 def euclide_ext(a,b):
-    d = pgcd(a, b)
     u, v = 0, 1
     u_prec, v_prec = 1, 0
     while b != 0:
@@ -26,7 +26,7 @@ def euclide_ext(a,b):
         a, b = b, r
         u_prec, u = u, u_prec-q*u
         v_prec, v = v, v_prec-q*v
-    return [d, u_prec, v_prec]
+    return (a, u_prec, v_prec)
         
 #print(euclide_ext(1027, 712))
     
@@ -38,8 +38,10 @@ def euclide_ext(a,b):
 def inverse_modulaire(N,a):
     d, u, v = euclide_ext(a, N)
     if(d != 1):
-        return 0
-    return v%N #Peut être remplacer par u%N
+        raise ValueError("d != 1")
+    if v < 0:
+        return v+N
+    return v #Peut être remplacer par u%N
 
 #print(inverse_modulaire(712, 1027))
 
@@ -54,8 +56,8 @@ def expo_modulaire(e,b,n):
     for _ in range(1, e):
         res *= b
         res = res%n
-    if res < 0:
-        res += n
+    #if res < 0:
+    #    res += n
     return res
 
 #print(expo_modulaire(3, 5, 13))
@@ -85,11 +87,11 @@ def expo_modulaire_fast(e,b,n):
         if(int_e == 1):
             res = (res*b)%n
         b = (b*b)%n
-    if res < 0:
-        res += n
+    #if res < 0:
+    #    res += n
     return res
 
-print(expo_modulaire_fast(3, 5, 13))
+#print(expo_modulaire_fast(3, 5, 13))
 
 ####################
 # Q5
