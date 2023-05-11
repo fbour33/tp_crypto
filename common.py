@@ -91,7 +91,7 @@ def expo_modulaire_fast(e,b,n):
     #    res += n
     return res
 
-#print(expo_modulaire_fast(3, 5, 13))
+print(expo_modulaire_fast(3, 5, 13))
 
 ####################
 # Q5
@@ -196,7 +196,7 @@ def gen_prime(n):
         if test_rabin(p, 20): # t = 20 pour une probabilité d'erreur très faible
             return p
 
-#print(gen_prime(10))
+# print(gen_prime(10))
 
 ####################
 # Helper functions for rsa/elgamal
