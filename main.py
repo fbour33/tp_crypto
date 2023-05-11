@@ -39,9 +39,25 @@ def main():
     ####################
     # Q18
     ####################
+
+
     
     m1 = "test1"
     m2 = "test2"
+
+    p, g = gen_ElGamal_pg(45)
+    print(p, g)
+    sk1, pk1 = gen_elgamal_sk_pk(p, g)
+    sk2, pk2 = gen_elgamal_sk_pk(p, g)
+    secret = gen_elgamal_get_secret(pk1, sk1, pk2, sk2, p)
+    c1 = enc_elgamal(m1, secret, p)
+    c2 = enc_elgamal(m2, secret, p)
+    print("test1 :", c1)
+    print("test2 :", c2)
+    dec1 = dec_elgamal(c1, secret, p)
+    dec2 = dec_elgamal(c2, secret, p)
+    print("dec1 :", dec1)
+    print("dec2 :", dec2)
     
     #########################################################################################################################
     # Attacks                                                                                                             #
